@@ -1,0 +1,22 @@
+@import 'constants/colors.scss';
+
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/forms';
+
+.page-title {
+  color: $primary-red;
+  font-size: 50px;
+}
+
+.form-wrapper {
+  margin: auto;
+  width: 50%;
+  margin-top: 40px;
+}
+
+.info-wrapper {
+  height: 20px;
+  text-align: center;
+}

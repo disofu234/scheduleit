@@ -1,0 +1,10 @@
+@import 'constants/colors.scss';
+
+.time-tick-large-text {
+  position: absolute;
+  left: 0;
+  bottom: 0.5px;
+  font-size: calc(clamp(20px, 2vw, 25px));
+  color: $primary-red;
+  user-select: none;
+}

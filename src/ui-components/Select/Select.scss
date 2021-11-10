@@ -1,0 +1,19 @@
+@import 'constants/colors.scss';
+
+.form-label {
+  color: $primary-white;
+  font-size: 22px;
+  text-shadow: -5px 3px 7px rgba(0,0,0,0.5);
+  font-weight: bold;
+}
+
+.select-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  margin-top: 5px;
+  color: $primary-red;
+  font-size: 15px;
+}

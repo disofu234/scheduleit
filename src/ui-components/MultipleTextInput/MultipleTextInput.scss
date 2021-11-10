@@ -1,0 +1,31 @@
+@import 'constants/colors.scss';
+
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons';
+
+td, th {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+}
+
+.name-input-wrapper {
+  width: 30%;
+}
+
+.email-input-wrapper {
+  width: 60%;
+}
+
+#name-input {
+  width: 85%;
+}
+
+#email-input {
+  width: 85%;
+}

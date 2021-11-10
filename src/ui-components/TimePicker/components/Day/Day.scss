@@ -1,0 +1,9 @@
+@import 'constants/colors.scss';
+
+.day {
+  flex: 1;
+  border-right: 1px solid $primary-red;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}

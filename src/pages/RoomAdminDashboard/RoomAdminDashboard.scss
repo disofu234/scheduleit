@@ -1,0 +1,13 @@
+@import 'constants/colors.scss';
+
+.card-header {
+  margin: 0;
+  color: $primary-red;
+}
+
+.card-text {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: $primary-red-dark-shade;
+  font-size: 18px
+}
