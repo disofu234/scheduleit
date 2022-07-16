@@ -3,14 +3,15 @@ import Message from './Message';
 import Select from './Select';
 import Spinner from './Spinner';
 import TextArea from './TextArea';
-import TimePicker from './TimePicker';
+import TimePicker from './TimePicker2';
 import ButtonWithStatus from './ButtonWithStatus';
 import Loader from './Loader';
-import CollapsibleCard from './CollapsibleCard';
 import MultipleTextInput from './MultipleTextInput';
 import Input from './Input';
 import Label from './Label';
 import Redirects from './Redirects';
+import HorizontalPager from './HorizontalPager';
+import Grid from './Grid';
 
 export {
   Button,
@@ -21,9 +22,10 @@ export {
   TimePicker,
   ButtonWithStatus,
   Loader,
-  CollapsibleCard,
   MultipleTextInput,
   Input,
   Label,
-  Redirects
+  Redirects,
+  HorizontalPager,
+  Grid
 };

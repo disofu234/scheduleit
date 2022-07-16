@@ -1,0 +1,53 @@
+@import 'constants/colors.scss';
+
+.header {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  background-color: $primary-red;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.header-text {
+  color: $primary-white;
+  margin-top: 5px;
+}
+
+.small {
+  font-size: 15px;
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
+}
+
+.big {
+  font-size: 20px;
+  @media (max-width: 700px) {
+    font-size: 17px;
+  }
+}
+
+.sup-text {
+  font-size: 9px;
+  @media (max-width: 700px) {
+    font-size: 8px;
+  }
+}
+
+.day {
+  margin: 5px;
+  min-width: 125px;
+  max-width: 125px;
+  max-height: 350px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  @media (max-width: 700px) {
+    min-width: 85px;
+    max-width: 85px;
+  }
+  border-radius: 5px 5px 5px 5px;
+}
+
+.time-tick-container {
+  border-radius: 0px 0px 5px 5px;
+}
