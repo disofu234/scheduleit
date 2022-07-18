@@ -1,0 +1,27 @@
+@import 'constants/colors.scss';
+
+.paged-wrapper-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.scrollable {
+  overflow: auto;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: $primary-red-light-shade;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Message.scss';
 
-const Message = ({ content }) =>
-  <b className="message">{content}</b>
+const Message = ({ children, className }) =>
+  <b className={className ? "message " + className: "message"}>{children}</b>
 
 export default Message;

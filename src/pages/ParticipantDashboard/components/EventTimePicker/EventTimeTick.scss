@@ -1,0 +1,14 @@
+@import 'constants/colors.scss';
+
+.event-time-tick-large-text {
+  position: absolute;
+  left: 0;
+  bottom: 0.5px;
+  font-size: 18px;
+  color: $primary-red;
+  user-select: none;
+  margin-left: 2px;
+  @media (max-width: 700px) {
+    font-size: 14px
+  }
+}

@@ -1,0 +1,40 @@
+@import 'constants/colors.scss';
+
+.dashboard-text {
+  margin-top: 20px;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.date-wrapper {
+  margin: 0 10px;
+}
+
+.participant-dashboard-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.participant-availability-table {
+  text-align: center;
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.pat-header {
+  border-bottom: 2px solid $primary-red;
+}
+
+.pat-header:nth-child(1) {
+  border-right: 2px solid $primary-red;
+}
+
+.pat-body-right:nth-child(1) {
+  border-right: 2px solid $primary-red;
+}
+
+.pat-body-left:nth-child(2) {
+  border-left: 2px solid $primary-red;
+}
