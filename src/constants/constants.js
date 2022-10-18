@@ -282,4 +282,4 @@ const DEV_IPADDRESSES = {
 
 export const ROOT_URL = `https://scheduleit-api-production.up.railway.app`
 
-export const UI_ROOT_URL = `http://${DEV_IPADDRESSES['home']}:3000`
+export const UI_ROOT_URL = `https://fantastic-kulfi-0a09ff.netlify.app`
