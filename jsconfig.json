@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/Users/disof/scheduleit/src/"
+    "baseUrl": "./src/"
   },
   "include": ["src/**/*"]
 }
