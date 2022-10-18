@@ -3,18 +3,18 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
-  margin: 20px 0px;
+  margin: 40px 0px;
 }
 
 .button {
-  background-color: $primary-red;
+  background-color: $primary-dark;
   border: none;
   font-size: 20px;
   font-weight: bold;
   padding: 15px 25px;
-  border-radius: 8px;
+  border-radius: 5px;
   color: $primary-white;
-  box-shadow: 10px 10px 20px #0000009d, -1px -1px 10px #0000009d;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .button:active {

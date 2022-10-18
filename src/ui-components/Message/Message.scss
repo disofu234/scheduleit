@@ -1,6 +1,13 @@
 @import 'constants/colors.scss';
 
 .message {
-  color: $primary-red;
+  color: $primary;
+}
+
+.message-small {
+  font-size: 16px;
+}
+
+.message-big {
   font-size: 22px;
 }

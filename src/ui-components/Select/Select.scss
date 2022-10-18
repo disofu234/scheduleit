@@ -1,7 +1,7 @@
 @import 'constants/colors.scss';
 
 .form-label {
-  color: $primary-white;
+  color: $white;
   font-size: 22px;
   text-shadow: -5px 3px 7px rgba(0,0,0,0.5);
   font-weight: bold;
@@ -9,6 +9,6 @@
 
 .error-message {
   margin-top: 5px;
-  color: $primary-red;
+  color: $primary-light;
   font-size: 15px;
 }

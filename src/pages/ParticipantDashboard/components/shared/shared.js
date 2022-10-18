@@ -29,17 +29,12 @@ export const Header = ({
   dateObj
 }) =>
   <div className="header">
-    <b className="header-text small">
-      {dateObj.toFormat('MMM')}
-    </b>
-    <br/>
-    <b className="header-text big">
+    <div className="header-text small">
+      {dateObj.toFormat('MMM, d')}<sup className="sup-text">{getDateOrdinal(dateObj)}</sup>
+    </div>
+    <div className="header-text big">
       {dateObj.toFormat('ccc').toUpperCase()}
-    </b>
-    <br />
-    <b className="header-text small">
-      {dateObj.toFormat('d')}<sup className="sup-text">{getDateOrdinal(dateObj)}</sup>
-    </b>
+    </div>
   </div>
 
 const getDateOrdinal = (date) => {

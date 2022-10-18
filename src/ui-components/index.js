@@ -3,7 +3,6 @@ import Message from './Message';
 import Select from './Select';
 import Spinner from './Spinner';
 import TextArea from './TextArea';
-import TimePicker from './TimePicker2';
 import ButtonWithStatus from './ButtonWithStatus';
 import Loader from './Loader';
 import MultipleTextInput from './MultipleTextInput';
@@ -12,6 +11,8 @@ import Label from './Label';
 import Redirects from './Redirects';
 import HorizontalPager from './HorizontalPager';
 import Grid from './Grid';
+import Checkbox from './Checkbox';
+import CheckboxGroup from './CheckboxGroup';
 
 export {
   Button,
@@ -19,7 +20,6 @@ export {
   Select,
   Spinner,
   TextArea,
-  TimePicker,
   ButtonWithStatus,
   Loader,
   MultipleTextInput,
@@ -27,5 +27,7 @@ export {
   Label,
   Redirects,
   HorizontalPager,
-  Grid
+  Grid,
+  Checkbox,
+  CheckboxGroup
 };

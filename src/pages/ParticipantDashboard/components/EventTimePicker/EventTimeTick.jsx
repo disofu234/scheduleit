@@ -7,57 +7,47 @@ export const EventTimeTickType = {
   OFFSET: 0,
   HOUR: 1,
   REGULAR: 2,
-  SEPARATOR: 3
-};
+}
 
 export const EventTimeTickStylesByType = {
   [EventTimeTickType.OFFSET]: {
     'min-height': '6.25%',
     'background-color': {
-      'not-selected': 'none',
-      'selected': 'none',
-      'disabled': Colors.PRIMARY_RED_MEDIUM_SHADE
+      0: 'none',
+      1: 'none',
+      2: 'none'
     },
     'border-bottom': {
-      'not-active': `2px dashed ${Colors.PRIMARY_RED_MEDIUM_SHADE}`,
-      'active': `2px dashed ${Colors.PRIMARY_RED}`
+      'not-active': `2px dashed ${Colors.GRAY}`,
+      'active': `2px dashed ${Colors.GRAY_DARK}`
     },
   },
 
   [EventTimeTickType.HOUR]: {
     'min-height': '6.25%',
     'background-color': {
-      'not-selected': 'none',
-      'selected': Colors.PRIMARY_RED_LIGHT_SHADE,
-      'disabled': Colors.PRIMARY_RED_MEDIUM_SHADE
+      0: 'none',
+      1: Colors.GRAY_LIGHT_OPAQUE,
+      2: Colors.GRAY_MILD_OPAQUE,
+      3: Colors.GRAY_OPAQUE
     },
     'border-bottom': {
-      'not-active': `2px dashed ${Colors.PRIMARY_RED_MEDIUM_SHADE}`,
-      'active': `2px dashed ${Colors.PRIMARY_RED}`
+      'not-active': `2px dashed ${Colors.GRAY}`,
+      'active': `2px dashed ${Colors.GRAY_DARK}`
     },
   },
 
   [EventTimeTickType.REGULAR]: {
     'min-height': '6.25%',
     'background-color': {
-      'not-selected': 'none',
-      'selected': Colors.PRIMARY_RED_LIGHT_SHADE
+      0: 'none',
+      1: Colors.GRAY_LIGHT_OPAQUE,
+      2: Colors.GRAY_MILD_OPAQUE,
+      3: Colors.GRAY_OPAQUE
     },
     'border-bottom': {
-      'not-active': `1px dashed ${Colors.PRIMARY_RED_LIGHT_SHADE}`,
-      'active': `1px dashed ${Colors.PRIMARY_RED}`
-    }
-  },
-
-  [EventTimeTickType.SEPARATOR]: {
-    'min-height': '12.5%',
-    'background-color': {
-      'not-selected': Colors.PRIMARY_RED_DARK_SHADE,
-      'selected': Colors.PRIMARY_RED
-    },
-    'border-bottom': {
-      'not-active': `none`,
-      'active': `none`
+      'not-active': `1px dashed ${Colors.GRAY_LIGHT}`,
+      'active': `1px dashed ${Colors.GRAY}`
     }
   }
 }
@@ -65,8 +55,8 @@ export const EventTimeTickStylesByType = {
 const EventTimeTickDiv = styled.div`
   flex: 1;
   position: relative;
-  min-height: 20px;
-  background-color: ${({ type, isSelected, isDisabled }) => isSelected ? EventTimeTickStylesByType[type]['background-color']['selected'] : isDisabled ? EventTimeTickStylesByType[type]['background-color']['disabled'] : EventTimeTickStylesByType[type]['background-color']['not-selected']};
+  min-height: 25px;
+  background-color: ${({ type, availabilityGroup }) => EventTimeTickStylesByType[type]['background-color'][availabilityGroup]};
   border-bottom: ${({ type, isBottomBorderActive }) => isBottomBorderActive ? EventTimeTickStylesByType[type]['border-bottom']['active'] : EventTimeTickStylesByType[type]['border-bottom']['not-active']};
 `;
 
@@ -75,7 +65,7 @@ const EventTimeTickText = styled.b`
   right: 0;
   bottom: 0;
   font-size: 12px;
-  color: ${Colors.PRIMARY_RED_MEDIUM_SHADE};
+  color: ${Colors.GRAY};
   user-select: none;
   visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
   @media (max-width: 700px) {
@@ -87,7 +77,7 @@ const EventTimeTick = ({
   timeString,
   hourString,
   type,
-  isSelected,
+  availabilityGroup = 0,
   isFirstOrLastTimeInTimeRange,
   onMouseEnter = () => {},
   onMouseLeave = () => {}
@@ -95,7 +85,7 @@ const EventTimeTick = ({
   return (
     <EventTimeTickDiv
       type={type}
-      isSelected={isSelected}
+      availabilityGroup={availabilityGroup}
       isBottomBorderActive={false}
       onMouseEnter={() => onMouseEnter()}
       onMouseLeave={() => onMouseLeave()}

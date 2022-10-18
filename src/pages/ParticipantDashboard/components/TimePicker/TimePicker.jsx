@@ -3,7 +3,11 @@ import { DateTime } from "luxon"
 import "../shared/TimePicker.scss"
 import { Grid } from "ui-components"
 import TimeTick, { TimeTickType } from "./TimeTick"
-import { constructTimeFromString, determineEarlierAndLaterTime } from "utils/constructors/constructTime"
+import { 
+  constructTimeFromString, 
+  determineEarlierAndLaterTime,
+  haveDifferentDates
+} from "utils/constructors/constructTime"
 import { useWidth } from "../../utils/hooks"
 import {
   MINUTE_GRANULARITY,
@@ -26,6 +30,10 @@ const TimePicker = ({
 
   const onTimeTickClick = (timeString) => {
     if(clickedTime) {
+      if (haveDifferentDates(clickedTime, timeString)) {
+        setClickedTime(timeString)
+        return
+      }
       toggleSelectedTimes(clickedTime, timeString)
       setClickedTime(undefined)
     } else {
@@ -125,7 +133,7 @@ const TimePicker = ({
     )
   )
 
-  const maxDaysInAPage = width < 1000 ? width < 700 ? 3 : 5 : 7
+  const maxDaysInAPage = width < 1000 ? 2 : 3
 
   return (
     <Grid

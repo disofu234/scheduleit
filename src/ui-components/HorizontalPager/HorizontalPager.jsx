@@ -24,14 +24,14 @@ const HorizontalPager = ({ children, maxNumOfElementsInPage, onPageChange = () =
 
   return (
     <div className="horizontal-pager">
-      <div className="button-container">
+      <div className="button-container button-container-left">
         {page > 0 &&
-          <div className="left-button" onClick={() => onLeftButtonClick()}></div>}
+          <div className="horizontal-pager-left-button" onClick={() => onLeftButtonClick()}></div>}
       </div>
       {childrenArr.filter((_, ind) => Math.floor(ind / maxNumOfElementsInPage) === page)}
-      <div className="button-container">
+      <div className="button-container button-container-right">
         {page < maxNumOfPages &&
-          <div className="right-button" onClick={() => onRightButtonClick()}></div>}
+          <div className="horizontal-pager-right-button" onClick={() => onRightButtonClick()}></div>}
       </div>
     </div>
   )

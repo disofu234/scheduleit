@@ -1,0 +1,46 @@
+@import 'constants/colors.scss';
+
+.date-picker-wrapper {
+  width: fit-content;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.left-button {
+  width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-right: 8px solid $primary-light;
+	border-bottom: 8px solid transparent;
+  margin-left: 10px;
+}
+
+.right-button {
+  width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-left: 8px solid $primary-light;
+	border-bottom: 8px solid transparent;
+  margin-right: 10px;
+}
+
+.month-picker-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.month-picker-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: $primary-light;
+}
+
+.week-wrapper {
+  width: 100%;
+}
+
+.month-picker-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
