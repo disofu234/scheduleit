@@ -11,7 +11,8 @@ const FAILED_VERIFICATION_MESSAGE = "Verification failed."
 const ButtonWithStatus = ({ 
   buttonContent, 
   asyncAction, 
-  verifier = () => true, 
+  verifier = () => true,
+  onSuccess = () => {},
   errorMessage, 
   successMessage 
 }) => {
@@ -25,6 +26,7 @@ const ButtonWithStatus = ({
     setError(false);
     asyncAction().then(() => {
       setIsLoading(false);
+      onSuccess();
     }).catch(error => {
       setError(errorMessage);
       setIsLoading(false);

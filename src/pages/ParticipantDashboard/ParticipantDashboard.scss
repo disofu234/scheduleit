@@ -13,6 +13,15 @@
 .participant-dashboard-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.participant-dashboard-select {
+  width: 60%;
+  margin: 20px auto 0px auto;
 }
 
 .participant-availability-table {
@@ -23,18 +32,100 @@
   margin-top: 20px;
 }
 
-.pat-header {
-  border-bottom: 2px solid $primary-red;
+.group-availability-wrapper {
+  width: fit-content;
+  margin: auto;
 }
 
-.pat-header:nth-child(1) {
-  border-right: 2px solid $primary-red;
+.participant-modal-link {
+  margin-left: 85px;
+  margin-top: 10px;
+  color: $primary-red;
+  font-size: 17px;
 }
 
-.pat-body-right:nth-child(1) {
-  border-right: 2px solid $primary-red;
+.participant-modal-link:hover, .participant-modal-link:focus {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.pat-body-left:nth-child(2) {
-  border-left: 2px solid $primary-red;
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: $primary-white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.close-button {
+  float: right;
+  color: $primary-red-medium-shade;
+  font-size: 25px;
+}
+
+.close-button:hover, .close-button:focus {
+  color: $primary-red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-text {
+  margin-top: 10px;
+}
+
+.participants-checkbox-wrapper {
+  margin-top: 10px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.participants-checkbox-wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.participants-checkbox-wrapper::-webkit-scrollbar-thumb {
+  background-color: $primary-red-medium-shade;
+}
+
+.participant-dashboard-link-wrapper {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.participant-dashboard-link {
+  color: $primary-red;
+  font-size: 17px;
+}
+
+.participant-dashboard-link:hover, .participant-dashboard-link:focus {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.participant-dashboard-share {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  color: $primary-light;
+  font-size: 20px;
+  @media (max-width: 500px) {
+    font-size: 17px;
+  }
+}
+
+.participang-dashboard-share-link {
+  color: $primary;
 }

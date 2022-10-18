@@ -1,5 +1,5 @@
 import { constructTime, constructTimeFromString } from "utils/constructors/constructTime"
-import { MINUTE_GRANULARITY } from "ui-components/TimePicker2/constants"
+import { MINUTE_GRANULARITY } from "../components/shared/shared"
 
 export const constructAvailabilityArray = (
   earliestHour,
@@ -55,8 +55,7 @@ export const convertTimesBasedOnTimeZone = (times, sourceTimeZone, targetTimeZon
   }))
 
 const getRandomInt = (min, max) => {
-  min = Math.ceil(min)
-  max = Math.floor(max)
+  max = max + 1
   return Math.floor(Math.random() * (max - min) + min)
 }
 
@@ -65,7 +64,7 @@ const selectAtRandom = (arr) => {
 
   let arrCopy = [...arr]
   const rc = []
-  for (let i = 0; i <= numElementsToSelect; i++) {
+  for (let i = 0; i < numElementsToSelect; i++) {
     const selectedIndex = getRandomInt(0, arrCopy.length)
     rc.push(arrCopy[selectedIndex])
     arrCopy.splice(selectedIndex, 1)

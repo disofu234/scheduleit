@@ -60,12 +60,6 @@ const constructTimeFromDateTimeObj = (dateTimeObj) => ({
     return this.dateTimeObj.toFormat('DD')
   },
 
-  isBackwardDST() {
-    const prevHourTimeObj = this.dateTimeObj.minus({ hours: 1 })
-
-    return prevHourTimeObj.hour === this.dateTimeObj.hour
-  },
-
   isValid() {
     return this.dateTimeObj.isValid
   },
@@ -82,12 +76,12 @@ const constructTimeFromDateTimeObj = (dateTimeObj) => ({
     return this.addMinutes(-minuteGranularity).toStringMilitaryForm()
   },
 
-  isMidnight() {
-    return this.isHour() && (this.hour === 0 || (this.hour === 1 && this.addMinutes(-60).hour === 23))
-  },
-
   isConsecutiveTo(time, minuteGranularity) {
     return this.addMinutes(minuteGranularity).isEqualTo(time) || this.addMinutes(-minuteGranularity).isEqualTo(time)
+  },
+
+  hasDifferentDateAs(time) {
+    return this.toDate() !== time.toDate()
   }
 })
 
@@ -122,4 +116,11 @@ const determineEarlierAndLaterTime = (firstTimeString, secondTimeString, timeZon
   return [startTime, endTime];
 }
 
-export { constructTime, constructTimeFromString, determineEarlierAndLaterTime };
+const haveDifferentDates = (timeString1, timeString2) => {
+  const time1 = constructTimeFromString(timeString1)
+  const time2 = constructTimeFromString(timeString2)
+
+  return time1.hasDifferentDateAs(time2)
+}
+
+export { constructTime, constructTimeFromString, determineEarlierAndLaterTime, haveDifferentDates };

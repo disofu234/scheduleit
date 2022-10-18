@@ -1,0 +1,36 @@
+@import 'constants/colors.scss';
+
+.paged-form-wrapper {
+  width: fit-content;
+  margin: auto;
+}
+
+.paged-form-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paged-form-message {
+  color: $primary;
+  font-size: 32px;
+  @media (max-width: 500px) {
+    font-size: 22px;
+  }
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.paged-form-footer {
+  color: $primary;
+  font-size: 22px;
+}
+
+.previous-button:hover, .next-button:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}

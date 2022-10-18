@@ -15,18 +15,26 @@
   margin-bottom: auto;
 }
 
-.left-button {
-  width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-right: 10px solid $primary-red;
-	border-bottom: 10px solid transparent;
+.button-container-left {
+  margin-right: 8px;
 }
 
-.right-button {
+.button-container-right {
+  margin-left: 8px;
+}
+
+.horizontal-pager-left-button {
   width: 0;
 	height: 0;
-	border-top: 10px solid transparent;
-	border-left: 10px solid $primary-red;
-	border-bottom: 10px solid transparent;
+	border-top: 13px solid transparent;
+	border-right: 13px solid $primary-red;
+	border-bottom: 13px solid transparent;
+}
+
+.horizontal-pager-right-button {
+  width: 0;
+	height: 0;
+	border-top: 13px solid transparent;
+	border-left: 13px solid $primary-red;
+	border-bottom: 13px solid transparent;
 }

@@ -26,11 +26,11 @@ const Grid = ({
         style={style}
         scrollAndHeaderWrapperClass={scrollAndHeaderWrapperClass} 
         cellContainerClass={cellContainerClass}
-       >{headerProps.map((headerProp, ind) => <Header {...headerProp} />)}</RowOrColumn>] :
+       >{headerProps.map((headerProp, ind) => <Header {...headerProp} />)}</RowOrColumn> ] :
       []
 
   return (
-    <PagedWrapper paged={paged} maxNumOfElementsInPage={maxNumOfElementsInPage}>
+    <PagedWrapper paged={paged} maxNumOfElementsInPage={maxNumOfElementsInPage} direction={direction}>
       {getHeaderRowOrColumnIfNeeded().concat(cellProps.map(
         (cellPropRowOrColumn, ind) => 
           <RowOrColumn

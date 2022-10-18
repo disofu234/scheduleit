@@ -1,0 +1,8 @@
+@import 'constants/colors.scss';
+
+.input-container {
+  width: calc(max(50%, 300px));
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}

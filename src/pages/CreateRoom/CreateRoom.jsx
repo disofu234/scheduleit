@@ -1,104 +1,116 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   ButtonWithStatus,
   Select,
-  MultipleTextInput,
   Redirects
-} from 'ui-components';
-import useForm from 'utils/hooks/useForm';
+} from 'ui-components'
+import useForm from 'utils/hooks/useForm'
 import {
-  TIME_IN_DAY_OPTIONS,
-  MINUTE_GRANULARITY_OPTIONS,
-} from './utils/constants';
+  TIME_IN_DAY_OPTIONS
+} from './utils/constants'
 import {
-  convertEventTargetValueToInteger,
-  getListOfSelectedValues,
-  getTenWeeksFromNow
-} from './utils/functions';
-import { createRoom } from './requests';
-import './CreateRoom.scss';
+  convertEventTargetValueToInteger
+} from './utils/functions'
+import { createEvent } from './requests'
+import './CreateRoom.scss'
+import DatePicker from './components/DatePicker'
+import PagedForm from './components/PagedForm'
+import {
+  VALID_TIMEZONES
+} from 'constants/constants'
 
 const formInputs = [{ 
-  name: 'firstHourInDay', 
+  name: 'earliestHourEventCanTakePlaceIn', 
 }, {
-  name: 'lastHourInDay',
-}, { 
-  name: 'minuteGranularity',
+  name: 'latestHourEventCanTakePlaceIn',
 }, {
-  name: 'weeks',
-},{
-  name: 'users',
-  defaultValue: []
-}];
+  name: 'timeZone',
+  defaultValue: Intl.DateTimeFormat().resolvedOptions().timeZone
+}]
 
 const CreateRoom = () => {
-  const [inputs, inputErrors, onInputChange, verifyInputs, setInputs] = useForm(formInputs);
-  const [roomId, setRoomId] = useState('');
+  const [datesEventCanTakePlaceIn, setDatesEventCanTakePlaceIn] = useState([])
+  const [inputs, inputErrors, onInputChange, verifyInputs, setInputs] = useForm(formInputs)
+  const [eventId, setEventId] = useState('')
 
   useEffect(() => {
-    if (inputs.firstHourInDay >= inputs.lastHourInDay) {
-      setInputs({ lastHourInDay: undefined });
+    if (inputs.earliestHourEventCanTakePlaceIn >= inputs.latestHourEventCanTakePlaceIn) {
+      setInputs({ latestHourEventCanTakePlaceIn: undefined });
     };
-  }, [inputs.firstHourInDay]);
+  }, [inputs.earliestHourEventCanTakePlaceIn])
 
   const onCreateRoomButtonClick = async () => {
-    const newRoomId = await createRoom(inputs);
-    setRoomId(newRoomId);
-  };
+    const newEventId = await createEvent({
+      earliestHourEventCanTakePlaceIn: inputs.earliestHourEventCanTakePlaceIn,
+      latestHourEventCanTakePlaceIn: inputs.latestHourEventCanTakePlaceIn,
+      datesEventCanTakePlaceIn,
+      timeZone: inputs.timeZone
+    })
+    setEventId(newEventId)
+  }
 
   return (
-    <Redirects to={`/room/${roomId}`} shouldRedirect={roomId}>
-      <div className="form-wrapper">
+    <Redirects to={`/event/${eventId}`} shouldRedirect={eventId}>
+      <div className='create-room-wrapper'>
         <PageTitle />
-        <Select 
-          label="First hour in day" 
-          onChange={onInputChange('firstHourInDay', convertEventTargetValueToInteger)} 
-          state={inputs.firstHourInDay} 
-          placeholder="Select a time" 
-          options={TIME_IN_DAY_OPTIONS.slice(0, TIME_IN_DAY_OPTIONS.length - 1)} 
-          errorMessage={inputErrors.firstHourInDay}
-        />
-        <Select 
-          label="Last hour in day" 
-          onChange={onInputChange('lastHourInDay', convertEventTargetValueToInteger)} 
-          state={inputs.lastHourInDay} 
-          placeholder="Select a time" 
-          options={TIME_IN_DAY_OPTIONS.slice(inputs.firstHourInDay + 1)}
-          errorMessage={inputErrors.lastHourInDay}
-        />
-        <Select 
-          label="Minute granularity" 
-          onChange={onInputChange('minuteGranularity', convertEventTargetValueToInteger)} 
-          state={inputs.minuteGranularity} 
-          placeholder="Select a minute granularity" 
-          options={MINUTE_GRANULARITY_OPTIONS}
-          errorMessage={inputErrors.minuteGranularity}
-        />
-        <Select
-          label="Weeks"
-          multiple
-          onChange={onInputChange('weeks', getListOfSelectedValues)}
-          state={inputs.weeks}
-          options={getTenWeeksFromNow().map(week => ({ value: week, content: week }))}
-          errorMessage={inputErrors.weeks}
-        />
-        <MultipleTextInput
-          users={inputs.users}
-          setUsers={onInputChange('users')}
-          label="Users"
-          errorMessage={inputErrors.users}
-        />
-        <ButtonWithStatus 
-          buttonContent="Create room"
-          asyncAction={onCreateRoomButtonClick}
-          verifier={verifyInputs}
-          successMessage="Room was successfully created."
+        <PagedForm 
+          pages={[
+            {
+              message: "What dates can your event take place at?",
+              content: (
+                <DatePicker 
+                  selectedDates={datesEventCanTakePlaceIn}
+                  onSelectedDatesChange={(newSelectedDates => setDatesEventCanTakePlaceIn(newSelectedDates))}
+                />
+              ),
+              shouldShowNextButton: datesEventCanTakePlaceIn.length > 0,
+              shouldAnimateNextButton: datesEventCanTakePlaceIn.length === 0
+            },
+            {
+              message: "What's the earliest and latest time your event can take place at?",
+              content: (
+                <>
+                  <Select
+                    label="Earliest time"
+                    className="create-room-select"
+                    onChange={onInputChange('earliestHourEventCanTakePlaceIn', convertEventTargetValueToInteger)} 
+                    state={inputs.earliestHourEventCanTakePlaceIn} 
+                    placeholder="Select a time" 
+                    options={TIME_IN_DAY_OPTIONS.slice(0, TIME_IN_DAY_OPTIONS.length - 1)} 
+                    errorMessage={inputErrors.earliestHourEventCanTakePlaceIn}
+                  />
+                  <Select 
+                    label="Latest time"
+                    className="create-room-select"
+                    onChange={onInputChange('latestHourEventCanTakePlaceIn', convertEventTargetValueToInteger)} 
+                    state={inputs.latestHourEventCanTakePlaceIn} 
+                    placeholder="Select a time" 
+                    options={TIME_IN_DAY_OPTIONS.slice(inputs.earliestHourEventCanTakePlaceIn + 1)}
+                    errorMessage={inputErrors.latestHourEventCanTakePlaceIn}
+                  />
+                  <Select
+                    label="Timezone"
+                    className="create-room-select"
+                    onChange={onInputChange('timeZone')}
+                    state={inputs.timeZone}
+                    options={VALID_TIMEZONES.map(({ label, tzCode }) => ({ value: tzCode, content: label }))}
+                  />
+                  <ButtonWithStatus 
+                    buttonContent="Create event"
+                    asyncAction={onCreateRoomButtonClick}
+                    verifier={verifyInputs}
+                    successMessage="Room was successfully created."
+                  />
+                </>
+              )     
+            }
+          ]}
         />
       </div>
     </Redirects>
-  );
+  )
 };
 
-const PageTitle = () => <h1 className="page-title">Create Room</h1>;
+const PageTitle = () => <div className="page-title">Create Event</div>;
 
 export default CreateRoom;

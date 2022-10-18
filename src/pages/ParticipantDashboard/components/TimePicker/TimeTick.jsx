@@ -12,52 +12,38 @@ export const TimeTickType = {
 
 export const TimeTickStylesByType = {
   [TimeTickType.OFFSET]: {
-    'min-height': '6.25%',
+    'min-height': '7.5%',
     'background-color': {
       'not-selected': 'none',
       'selected': 'none',
-      'disabled': Colors.PRIMARY_RED_MEDIUM_SHADE
     },
     'border-bottom': {
-      'not-active': `2px dashed ${Colors.PRIMARY_RED_MEDIUM_SHADE}`,
-      'active': `2px dashed ${Colors.PRIMARY_RED}`
+      'not-active': `2px dashed ${Colors.GRAY}`,
+      'active': `2px dashed ${Colors.GRAY_DARK}`
     },
   },
 
   [TimeTickType.HOUR]: {
-    'min-height': '6.25%',
+    'min-height': '7.5%',
     'background-color': {
       'not-selected': 'none',
-      'selected': Colors.PRIMARY_RED_LIGHT_SHADE,
-      'disabled': Colors.PRIMARY_RED_MEDIUM_SHADE
+      'selected': Colors.GRAY_LIGHT_OPAQUE,
     },
     'border-bottom': {
-      'not-active': `2px dashed ${Colors.PRIMARY_RED_MEDIUM_SHADE}`,
-      'active': `2px dashed ${Colors.PRIMARY_RED}`
+      'not-active': `2px dashed ${Colors.GRAY}`,
+      'active': `2px dashed ${Colors.GRAY_DARK}`
     },
   },
 
   [TimeTickType.REGULAR]: {
-    'min-height': '6.25%',
+    'min-height': '7.5%',
     'background-color': {
       'not-selected': 'none',
-      'selected': Colors.PRIMARY_RED_LIGHT_SHADE
+      'selected': Colors.GRAY_LIGHT_OPAQUE
     },
     'border-bottom': {
-      'not-active': `1px dashed ${Colors.PRIMARY_RED_LIGHT_SHADE}`,
-      'active': `1px dashed ${Colors.PRIMARY_RED}`
-    }
-  },
-
-  [TimeTickType.SEPARATOR]: {
-    'min-height': '12.5%',
-    'background-color': {
-      'not-selected': Colors.PRIMARY_RED_DARK_SHADE,
-      'selected': Colors.PRIMARY_RED
-    },
-    'border-bottom': {
-      'not-active': `none`,
-      'active': `none`
+      'not-active': `1px dashed ${Colors.GRAY_LIGHT}`,
+      'active': `1px dashed ${Colors.GRAY_DARK}`
     }
   }
 }
@@ -65,7 +51,7 @@ export const TimeTickStylesByType = {
 const TimeTickDiv = styled.div`
   flex: 1;
   position: relative;
-  min-height: 20px;
+  min-height: 25px;
   background-color: ${({ type, isSelected, isDisabled }) => isSelected ? TimeTickStylesByType[type]['background-color']['selected'] : isDisabled ? TimeTickStylesByType[type]['background-color']['disabled'] : TimeTickStylesByType[type]['background-color']['not-selected']};
   border-bottom: ${({ type, isBottomBorderActive }) => isBottomBorderActive ? TimeTickStylesByType[type]['border-bottom']['active'] : TimeTickStylesByType[type]['border-bottom']['not-active']};
 `;
@@ -75,7 +61,7 @@ const TimeTickText = styled.b`
   right: 0;
   bottom: 0;
   font-size: 12px;
-  color: ${Colors.PRIMARY_RED_MEDIUM_SHADE};
+  color: ${Colors.GRAY};
   user-select: none;
   visibility: ${({ isVisible }) => isVisible ? 'visible' : 'hidden'};
   @media (max-width: 700px) {
@@ -105,7 +91,7 @@ const TimeTick = ({
     >
       <TimeTickText isVisible={isHovered || isFirstSelectedTimeForTimeRangeSwitch || isFirstOrLastTimeInTimeRange}>{timeString}</TimeTickText>
       {(type === TimeTickType.OFFSET || type === TimeTickType.HOUR) &&
-        <b className="time-tick-large-text">{hourString}</b>
+        <div className="time-tick-large-text">{hourString}</div>
       }
     </TimeTickDiv>
   );

@@ -1,0 +1,11 @@
+@import 'constants/colors.scss';
+
+.error-message {
+  margin-top: 5px;
+  color: $primary-red;
+  font-size: 15px;
+}
+
+.input {
+  width: 90%;
+}
