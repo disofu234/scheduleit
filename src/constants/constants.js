@@ -280,6 +280,6 @@ const DEV_IPADDRESSES = {
   home: '192.168.0.141'
 }
 
-export const ROOT_URL = `http://${DEV_IPADDRESSES['home']}:2000`
+export const ROOT_URL = `https://scheduleit-api-production.up.railway.app`
 
 export const UI_ROOT_URL = `http://${DEV_IPADDRESSES['home']}:3000`
