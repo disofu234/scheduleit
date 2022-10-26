@@ -275,11 +275,6 @@ export const VALID_TIMEZONES = [
   { label: 'Kiritimati', tzCode: 'Pacific/Kiritimati' }
 ]
 
-const DEV_IPADDRESSES = {
-  ada: '192.168.1.17',
-  home: '192.168.0.141'
-}
+export const ROOT_URL = process.env.ROOT_URL || process.env.REACT_APP_ROOT_URL
 
-export const ROOT_URL = `https://scheduleit-api-production.up.railway.app`
-
-export const UI_ROOT_URL = `https://scheduleanevent.netlify.app`
+export const UI_ROOT_URL = process.env.UI_ROOT_URL || process.env.REACT_APP_UI_ROOT_URL
